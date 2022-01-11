@@ -3,20 +3,29 @@ const multiplyButton = document.querySelector('.mulBtn');
 const divideButton = document.querySelector('.divBtn');
 const subtractButton = document.querySelector('.subBtn');
 const equalsButton = document.querySelector('.equalsBtn');
+const displayAns = document.querySelector('.ans');
+
 let operatorSign = "";
+let answer = "";
+let num1 = 0;
+let num2 = 0;
+
+
+
 
 const operations = {
     add: function(a, b) { 
-        console.log(a + b);
+        return a + b;
     },
     multiply: function(a, b) { 
-        console.log(a * b);
+        answer = a * b;
+        return answer;
     },
     divide: function(a, b) { 
-        console.log(a / b);
+        return a / b;
     },
     subtract: function(a, b) { 
-        console.log(a - b);
+        return a - b;
     }
 }
 
@@ -37,16 +46,45 @@ const operate = function(num1, num2, operator) {
     }
 }
 
-multiplyButton.addEventListener("click", () => { operatorSign = "*"; });
-addButton.addEventListener("click", () => { operatorSign = "+"; });
-divideButton.addEventListener("click", () => { operatorSign = "/"; });
-subtractButton.addEventListener("click", () => { operatorSign = "-"; });
+multiplyButton.addEventListener("click", () => { 
+    firstNum();
+    clearInputField();
+    console.log(num1);
+    operatorSign = "*";
+
+ });
+addButton.addEventListener("click", () => {
+     operatorSign = "+";
+     });
+divideButton.addEventListener("click", () => { 
+    operatorSign = "/";
+ });
+subtractButton.addEventListener("click", () => { 
+    operatorSign = "-";
+ });
 
 
 
 equalsButton.addEventListener("click", () => {
-    const userIn1 = parseInt(document.querySelector('.num1').value);
-    const userIn2 = parseInt(document.querySelector('.num2').value);
-    console.log(operatorSign);
-    operate(userIn1, userIn2, operatorSign);
+   secondNum(); 
+   operate(num1, num2, operatorSign);
+   displayAns.textContent = answer;
 });
+
+function firstNum() {
+    const userInput = parseInt(document.querySelector('.userInput').value);
+    num1 = userInput;
+    return num1;
+}
+
+function secondNum() {
+    const userInput = parseInt(document.querySelector('.userInput').value);
+    num2 = userInput;
+    return num2;
+}
+
+function clearInputField() {
+    const userInput = document.querySelector('.userInput');
+    userInput.value = '';
+    userInput.focus();
+}
