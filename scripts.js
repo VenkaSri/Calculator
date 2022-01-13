@@ -4,7 +4,8 @@ const divideButton = document.querySelector('.divBtn');
 const subtractButton = document.querySelector('.subBtn');
 const equalsButton = document.querySelector('.equalsBtn');
 const displayAns = document.querySelector('.ans');
-
+const displayLiveAns = document.querySelector('.liveAns');
+let num = '';
 let operatorSign = "";
 let answer = "";
 let num1 = 0;
@@ -48,9 +49,12 @@ const operate = function(num1, num2, operator) {
 
 multiplyButton.addEventListener("click", () => { 
     firstNum();
+    num = num1;
     clearInputField();
-    console.log(num1);
-    operatorSign = "*";
+    changeInputField() 
+   
+    
+    
 
  });
 addButton.addEventListener("click", () => {
@@ -85,6 +89,10 @@ function secondNum() {
 
 function clearInputField() {
     const userInput = document.querySelector('.userInput');
-    userInput.value = '';
     userInput.focus();
+}
+
+function changeInputField() {
+    let userInput = document.querySelector('.userInput');
+    userInput.value += " x ";
 }
