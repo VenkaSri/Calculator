@@ -4,13 +4,14 @@ const divideButton = document.querySelector('.divBtn');
 const subtractButton = document.querySelector('.subBtn');
 const equalsButton = document.querySelector('.equalsBtn');
 const displayAns = document.querySelector('.ans');
+const currentEqDis = document.querySelector('.currentEq');
 
 let operatorSign = "";
 let answer = "";
 let num1 = 0;
 let num2 = 0;
 
-
+const numbers = new Array();
 
 
 const operations = {
@@ -47,10 +48,20 @@ const operate = function(num1, num2, operator) {
 }
 
 multiplyButton.addEventListener("click", () => { 
-    firstNum();
+    
+    numbers.push(firstNum());
     clearInputField();
-    console.log(num1);
+    console.log(numbers);
     operatorSign = "*";
+    currentEqDis.textContent = num1 + " x ";
+    if (numbers.length >= 2) {
+        operate(numbers[0], numbers[1], operatorSign);
+        numbers.length = 0;
+        numbers.push(answer);
+        
+    }
+    
+    console.log(answer);
 
  });
 addButton.addEventListener("click", () => {
@@ -66,15 +77,21 @@ subtractButton.addEventListener("click", () => {
 
 
 equalsButton.addEventListener("click", () => {
-   secondNum(); 
-   operate(num1, num2, operatorSign);
+    
+    numbers.push(firstNum());
+    console.log(numbers);
+   operate(numbers[0], numbers[1], operatorSign);
    displayAns.textContent = answer;
+   clearInputField();
+   numbers.length = 0;
+   numbers.push(answer);
+   console.log(numbers);
 });
 
 function firstNum() {
     const userInput = parseInt(document.querySelector('.userInput').value);
-    num1 = userInput;
-    return num1;
+    
+    return userInput;
 }
 
 function secondNum() {
