@@ -33,16 +33,14 @@ const operations = {
 const operate = function(num1, num2, operator) {
     switch (operator) {
         case "+":
-            operations.add(num1, num2);
-            break;
+            return operations.add(num1, num2);
         case "*":
-            operations.multiply(num1, num2);
-            break;
+            return operations.multiply(num1, num2);
         case "/":
-            operations.divide(num1, num2);
-            break;
+            return operations.divide(num1, num2);
         case "-":
-            operations.subtract(num1, num2);
+            return operations.subtract(num1, num2);
+        default:
             break;
     }
 }
@@ -51,10 +49,7 @@ multiplyButton.addEventListener("click", () => {
     firstNum();
     num = num1;
     clearInputField();
-    changeInputField() 
-   
-    
-    
+    changeInputField()  
 
  });
 addButton.addEventListener("click", () => {
