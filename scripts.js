@@ -8,8 +8,8 @@ const displayLiveAns = document.querySelector('.liveAns');
 let num = '';
 let operatorSign = "";
 let answer = "";
-let num1 = 0;
-let num2 = 0;
+let num1;
+let num2;
 
 
 
@@ -30,6 +30,12 @@ const operations = {
     }
 }
 
+
+
+
+
+
+
 const operate = function(num1, num2, operator) {
     switch (operator) {
         case "+":
@@ -45,11 +51,13 @@ const operate = function(num1, num2, operator) {
     }
 }
 
-multiplyButton.addEventListener("click", () => { 
-    firstNum();
-    num = num1;
+funcs[4].addEventListener("click", () => { 
+    // firstNum();
+    const userInput = parseInt(document.querySelector('.userInput').value);
+    num1 = userInput;
+    console.log(num1);
     clearInputField();
-    changeInputField()  
+    
 
  });
 addButton.addEventListener("click", () => {
@@ -84,6 +92,7 @@ function secondNum() {
 
 function clearInputField() {
     const userInput = document.querySelector('.userInput');
+    userInput.value = '';
     userInput.focus();
 }
 
