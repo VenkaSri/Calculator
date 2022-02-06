@@ -20,69 +20,6 @@ div.classList.add('box');
     
 }
 
-const funcs = document.querySelectorAll('.box')
-
-console.log(funcs);
-
-
-
-
-funcs[6].addEventListener("click", () => {
-    checkArray();
-    numbers[0] = "+";
-    addNums();
-  displayValue = '';
-  
-})
-
-funcs[5].addEventListener("click", () => {
-    checkArray();
-    numbers[0] = "-";
-    addNums();
-  displayValue = '';
-  
-})
-
-funcs[4].addEventListener("click", () => {
-    checkArray();
-    numbers[0] = "*";
-    addNums();
-  displayValue = '';
-  
-})
-
-funcs[3].addEventListener("click", () => {
-    checkArray();
-    numbers[0] = "/";
-    addNums();
-  displayValue = '';
-  
-})
-
-funcs[9].addEventListener("click", () => {
-    addNums();
-    checkArray();
-    console.log(ans);
-    
-  console.log(numbers);
-  
-})
-
-
-
-// funcs.forEach(item => {
-    
-//     item.addEventListener('click', () => {
-//         console.log(item);
-    
-//     switch(item) {
-//         case 0:
-//             alert("hi");
-//             break;
-//     }
-
-        
-//   })});
 
 document.querySelectorAll('.nBox').forEach(item => {
     
@@ -99,29 +36,3 @@ document.querySelectorAll('.nBox').forEach(item => {
         
   })});
 
-
-//   but.forEach(x => {
-//     x.addEventListener("click", () => {
-//       p.innerHTML = displayValue;
-//       p.innerHTML += x.innerHTML;
-  
-//       if (p.innerHTML === '') {
-//         alert("in needed");
-//       } else {
-//         displayValue = p.innerHTML;
-//       }
-//     });
-//   });
-
-
-
-//   function num12(val) {
-//     let userInput = document.querySelector('.userInput');
-//     userInput.value += val.innerHTML;
-// }
-
-
-// function clear() {
-//     let userInput = document.querySelector('.userInput');
-//     userInput.value = "";
-// }
