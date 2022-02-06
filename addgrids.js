@@ -22,13 +22,50 @@ div.classList.add('box');
 
 const funcs = document.querySelectorAll('.box')
 
+console.log(funcs);
 
 
 
 
+funcs[6].addEventListener("click", () => {
+    checkArray();
+    numbers[0] = "+";
+    addNums();
+  displayValue = '';
+  
+})
 
-funcs[0].addEventListener("click", () => {
-    clear();
+funcs[5].addEventListener("click", () => {
+    checkArray();
+    numbers[0] = "-";
+    addNums();
+  displayValue = '';
+  
+})
+
+funcs[4].addEventListener("click", () => {
+    checkArray();
+    numbers[0] = "*";
+    addNums();
+  displayValue = '';
+  
+})
+
+funcs[3].addEventListener("click", () => {
+    checkArray();
+    numbers[0] = "/";
+    addNums();
+  displayValue = '';
+  
+})
+
+funcs[9].addEventListener("click", () => {
+    addNums();
+    checkArray();
+    console.log(ans);
+    
+  console.log(numbers);
+  
 })
 
 
@@ -50,23 +87,41 @@ funcs[0].addEventListener("click", () => {
 document.querySelectorAll('.nBox').forEach(item => {
     
     item.addEventListener('click', () => {
-      num12(item);
-      let userIn = document.querySelector('.userInput').value;
-      userIn += item.innerHTML;  
-
-        // digits.forEach(i => {
-        //     if (
-        // });
+  
+        disA.innerHTML = displayValue;
+        disA.innerHTML += item.innerHTML;
+    
+        if (disA.innerHTML === '') {
+          alert("in needed");
+        } else {
+          displayValue = disA.innerHTML;
+        }
         
   })});
 
-  function num12(val) {
-    let userInput = document.querySelector('.userInput');
-    userInput.value += val.innerHTML;
-}
+
+//   but.forEach(x => {
+//     x.addEventListener("click", () => {
+//       p.innerHTML = displayValue;
+//       p.innerHTML += x.innerHTML;
+  
+//       if (p.innerHTML === '') {
+//         alert("in needed");
+//       } else {
+//         displayValue = p.innerHTML;
+//       }
+//     });
+//   });
 
 
-function clear() {
-    let userInput = document.querySelector('.userInput');
-    userInput.value = "";
-}
+
+//   function num12(val) {
+//     let userInput = document.querySelector('.userInput');
+//     userInput.value += val.innerHTML;
+// }
+
+
+// function clear() {
+//     let userInput = document.querySelector('.userInput');
+//     userInput.value = "";
+// }

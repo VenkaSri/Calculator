@@ -1,102 +1,82 @@
-const addButton = document.querySelector('.addBtn');
-const multiplyButton = document.querySelector('.mulBtn');
-const divideButton = document.querySelector('.divBtn');
-const subtractButton = document.querySelector('.subBtn');
-const equalsButton = document.querySelector('.equalsBtn');
-const displayAns = document.querySelector('.ans');
-const displayLiveAns = document.querySelector('.liveAns');
-let num = '';
-let operatorSign = "";
-let answer = "";
-let num1;
+const but = document.querySelectorAll("button");
+let addBtn = document.querySelector(".add");
+let eqBtn = document.querySelector(".eq");
+let subBtn = document.querySelector(".sub");
+let mulBtn = document.querySelector(".mul");
+let divBtn = document.querySelector(".div");
+const disA = document.querySelector('.ans');
+// const add = document.querySelectorAll(".add");
+// const add = document.querySelectorAll(".add");
+// const add = document.querySelectorAll(".add");
+// const add = document.querySelectorAll(".add");
+const p = document.querySelector("p");
+let displayValue = "";
+let ans;
+let num;
 let num2;
+let op;
 
+const numbers = new Array();
 
+// buttons();
 
+function add(a, b) {
+  ans = a + b;
+  return ans;
+}
+function subtract(a, b) {
+  ans = a - b;
+  return ans;
+}
+function divide(a, b) {
+  if (b != 0) {
+    ans = a / b;
+  return ans;
+  }
+  ans = "Error";
+  return ans;
+}
+function multiply(a, b) {
+  ans = a * b;
+  return ans;
+}
 
-const operations = {
-    add: function(a, b) { 
-        return a + b;
-    },
-    multiply: function(a, b) { 
-        answer = a * b;
-        return answer;
-    },
-    divide: function(a, b) { 
-        return a / b;
-    },
-    subtract: function(a, b) { 
-        return a - b;
-    }
+function operate(op, num1, num2) {
+  switch (op) {
+    case "+":
+      return add(num1, num2);
+      break;
+    case "-":
+      return subtract(num1, num2);
+      break;
+    case "/":
+      return divide(num1, num2);
+      break;
+    case "*":
+      return multiply(num1, num2);
+      break;
+    default:
+      "NO";
+      break;
+  }
 }
 
 
 
-
-
-
-
-const operate = function(num1, num2, operator) {
-    switch (operator) {
-        case "+":
-            return operations.add(num1, num2);
-        case "*":
-            return operations.multiply(num1, num2);
-        case "/":
-            return operations.divide(num1, num2);
-        case "-":
-            return operations.subtract(num1, num2);
-        default:
-            break;
-    }
+function checkArray() {
+if (numbers.length === 2) {
+    console.log(displayValue);
+    operate(numbers[0], numbers[1], parseFloat(displayValue));
+    disA.innerHTML = ans;
+    numbers[1] = ans;
 }
 
-funcs[4].addEventListener("click", () => { 
-    // firstNum();
-    const userInput = parseInt(document.querySelector('.userInput').value);
-    num1 = userInput;
-    console.log(num1);
-    clearInputField();
+}
+
+
+function addNums() {
+  if (numbers.length < 2) {
+    numbers.push(parseFloat(displayValue));
     
-
- });
-addButton.addEventListener("click", () => {
-     operatorSign = "+";
-     });
-divideButton.addEventListener("click", () => { 
-    operatorSign = "/";
- });
-subtractButton.addEventListener("click", () => { 
-    operatorSign = "-";
- });
-
-
-
-equalsButton.addEventListener("click", () => {
-   secondNum(); 
-   operate(num1, num2, operatorSign);
-   displayAns.textContent = answer;
-});
-
-function firstNum() {
-    const userInput = parseInt(document.querySelector('.userInput').value);
-    num1 = userInput;
-    return num1;
-}
-
-function secondNum() {
-    const userInput = parseInt(document.querySelector('.userInput').value);
-    num2 = userInput;
-    return num2;
-}
-
-function clearInputField() {
-    const userInput = document.querySelector('.userInput');
-    userInput.value = '';
-    userInput.focus();
-}
-
-function changeInputField() {
-    let userInput = document.querySelector('.userInput');
-    userInput.value += " x ";
+  } 
 }
