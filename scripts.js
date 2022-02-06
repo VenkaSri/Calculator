@@ -5,6 +5,7 @@ let subBtn = document.querySelector(".sub");
 let mulBtn = document.querySelector(".mul");
 let divBtn = document.querySelector(".div");
 const disA = document.querySelector('.ans');
+const disAns = document.querySelector('.sAns');
 // const add = document.querySelectorAll(".add");
 // const add = document.querySelectorAll(".add");
 // const add = document.querySelectorAll(".add");
@@ -67,7 +68,8 @@ function checkArray() {
 if (numbers.length === 2) {
     console.log(displayValue);
     operate(numbers[0], numbers[1], parseFloat(displayValue));
-    disA.innerHTML = ans;
+    // disA.innerHTML = ans;
+    disAns.innerHTML = ans;
     numbers[1] = ans;
 }
 

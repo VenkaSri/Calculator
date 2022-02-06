@@ -1,0 +1,50 @@
+.top-part {
+    height: 60px;
+    border: 1px solid #ADB2BD;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.top-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    gap: 30px;
+}
+
+.light-sensors {
+    display: flex;
+    gap: 2px;
+    margin-left: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.speakers {
+    height: 8px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    width: 70px;
+    border: 1px solid #aaa9ad;
+}
+.light-sensors > div {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    
+}
+
+.front-cam {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    border: 1px solid #000;
+}

@@ -12,18 +12,38 @@ body {
 }
 
 .display {
-    border: 1px solid red;
     height: 200px;
     position: relative;
 }
 
-.display .ans {
-    height: 200x;
-    width: 200px;
+.outline {
+    border: 1px solid #ADB2BD;
+}
+
+
+
+.display .ansC {
+    height: 150px;
+    width: 250px;
     position: absolute;
     right: 0;
-    border: 1px solid blue;
+    top: 50px;
 }
+
+.display .ans {
+    font-size: 25px;
+    position: absolute;
+    right: 0;
+}
+
+.display .sAns {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    font-size: 20px;
+}
+
+
 
 .box,
 .nBox {
