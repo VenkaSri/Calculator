@@ -6,12 +6,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    border-bottom: none; 
+    flex-direction: column;
+}
+
+.logo {
+    margin-top: 5px;
+}
+
+.syst-bar {
+    height: 20px;
+    border: 1px solid red;
 }
 
 .bot-part {
     height: 60px;
     border: 1px solid #ADB2BD;
+
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
     display: flex;
@@ -26,7 +37,16 @@
     justify-content: center;
     width: 300px;
     gap: 30px;
+    margin-top: 5px;
 }
+
+
+.outline {
+    border-left: 1px solid #ADB2BD;
+    border-right: 1px solid #ADB2BD;
+
+}
+
 
 .light-sensors {
     display: flex;
@@ -45,6 +65,17 @@
     width: 70px;
     border: 1px solid #aaa9ad;
 }
+
+.home-button {
+    height: 15px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    width: 50px;
+    border: 1px solid #aaa9ad;
+}
+
 .light-sensors > div {
     height: 10px;
     width: 10px;

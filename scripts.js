@@ -1,120 +1,118 @@
-const but = document.querySelectorAll("button");
-let addBtn = document.querySelector(".add");
-let eqBtn = document.querySelector(".eq");
-let subBtn = document.querySelector(".sub");
-let mulBtn = document.querySelector(".mul");
-let divBtn = document.querySelector(".div");
-const disA = document.querySelector(".ans");
-const disAns = document.querySelector(".sAns");
-// const add = document.querySelectorAll(".add");
-// const add = document.querySelectorAll(".add");
-// const add = document.querySelectorAll(".add");
-// const add = document.querySelectorAll(".add");
-const p = document.querySelector("p");
-let displayValue = "";
-let ans;
-let num;
-let num2;
-let op;
-
-const numbers = new Array();
-
-// buttons();
-
-function add(a, b) {
-  ans = a + b;
-  return ans;
-}
-function subtract(a, b) {
-  ans = a - b;
-  return ans;
-}
-function divide(a, b) {
-  if (b != 0) {
-    ans = a / b;
-    return ans;
+class Calculator {
+  constructor(prevOpText, currOpText) {
+    this.prevOpText = prevOpText;
+    this.currOpText = currOpText;
+    this.clear();
   }
-  ans = "Error";
-  return ans;
-}
-function multiply(a, b) {
-  ans = a * b;
-  return ans;
-}
 
-function operate(op, num1, num2) {
-  switch (op) {
-    case "+":
-      return add(num1, num2);
-      break;
-    case "-":
-      return subtract(num1, num2);
-      break;
-    case "/":
-      return divide(num1, num2);
-      break;
-    case "*":
-      return multiply(num1, num2);
-      break;
-    default:
-      "NO";
-      break;
+  clear() {
+    this.currOP = "";
+    this.prevOP = "";
+    this.operation = undefined;
+  }
+
+  delete() {
+    this.currOP = this.currOP.toString().slice(0, -1)
+  }
+
+
+  appendNumber(number) {
+    if (number === "." && this.currOP.includes(".")) return;
+    this.currOP = this.currOP.toString() + number.toString();
+  }
+
+  chooseOperation(operation) {
+    if(this.operation === '') return;
+    if (this.prevOP !== '') {
+      this.compute()
+    }
+    this.operation = operation;
+    this.prevOP = this.currOP;
+    this.currOP = "";
+  }
+
+  compute() {
+    let computation
+    const prev = parseFloat(this.prevOP);
+    const current = parseFloat(this.currOP);
+    if(isNaN(prev) || isNaN(current)) return;
+    switch (this.operation) {
+      case "+":
+        computation = prev + current;
+        break;
+      case "-":
+        computation = prev - current;
+        break;
+      case "/":
+        computation = prev / current;
+        break;
+      case "X":
+          computation = prev * current;
+          break;
+      default:
+        return
+    }
+    this.currOP = computation;
+    this.operation = undefined;
+    this.prevOP = '';
+  }
+
+  updateDisplay() {
+    this.currOpText.innerText = this.currOP;
+    if(this.operation != null) {
+      this.prevOpText.innerText = `${this.prevOP} ${this.operation}`;
+    }
+    
+  
   }
 }
 
+
+const button = document.querySelector("button");
+const numbers = document.querySelectorAll(".nBox");
 const funcs = document.querySelectorAll(".box");
+const clearButton = funcs[0];
+const bracketsButton = funcs[1];
+const percentButton = funcs[2];
+const opButtons = document.querySelectorAll(".oBox");
+const equalsButton = funcs[5];
+const deciButton = funcs[4];
+const plusMinusButton = funcs[7];
+const prevOpText = document.querySelector(".preview-op");
+const currOpText = document.querySelector(".current-op");
 
-console.log(funcs);
+const calc = new Calculator(prevOpText, currOpText);
 
-funcs[6].addEventListener("click", () => {
-  checkArray();
-  numbers[0] = "+";
-  addNums();
-  displayValue = "";
+numbers.forEach((but) => {
+  but.addEventListener("click", () => {
+    calc.appendNumber(but.innerText);
+    calc.updateDisplay();
+  });
 });
 
-funcs[5].addEventListener("click", () => {
-  checkArray();
-  numbers[0] = "-";
-  addNums();
-  displayValue = "";
+deciButton.addEventListener("click", () => {
+  calc.appendNumber(deciButton.innerText);
+  calc.updateDisplay();
 });
 
-funcs[4].addEventListener("click", () => {
-  checkArray();
-  numbers[0] = "*";
-  addNums();
-  displayValue = "";
+opButtons.forEach((but) => {
+  but.addEventListener("click", () => {
+    calc.chooseOperation(but.innerText);
+    calc.updateDisplay();
+  });
 });
 
-funcs[3].addEventListener("click", () => {
-  checkArray();
-  numbers[0] = "/";
-  addNums();
-  displayValue = "";
-});
+equalsButton.addEventListener('click', () => {
+  calc.compute();
+  calc.updateDisplay();
+})
 
-funcs[9].addEventListener("click", () => {
-  checkArray();
-  console.log(ans);
+clearButton.addEventListener('click', () => {
+  calc.clear();
+  calc.updateDisplay();
+})
 
-  console.log(numbers);
-});
-
-function checkArray() {
-  if (numbers.length === 2) {
-    console.log(displayValue);
-    operate(numbers[0], numbers[1], parseFloat(displayValue));
-    // disA.innerHTML = ans;
-    disA.innerHTML = ans;
-    numbers[1] = ans;
-  }
-}
-
-function addNums() {
-  if (numbers.length < 2) {
-    numbers.push(parseFloat(displayValue));
-  }
-}
-
-function checkForMatch() {}
+clearButton.addEventListener('click', () => {
+  calc.clear();
+  calc.updateDisplay();
+})

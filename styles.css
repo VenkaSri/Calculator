@@ -13,46 +13,35 @@ body {
 
 .display {
     height: 200px;
-    position: relative;
-}
-
-.outline {
-    border: 1px solid #ADB2BD;
-}
-
-
-
-.display .ansC {
-    height: 150px;
-    width: 250px;
-    position: absolute;
-    right: 0;
-    top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 2.4em;
 }
 
 .display .ans {
-    font-size: 25px;
+    height: 200x;
+    width: 200px;
     position: absolute;
     right: 0;
+    border: 1px solid blue;
 }
-
-.display .sAns {
-    bottom: 0;
-    position: absolute;
-    right: 0;
-    font-size: 20px;
-}
-
-
 
 .box,
-.nBox {
+.nBox,
+.oBox {
     border: 1px solid #f4f4f4;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5em;
     color: #A9A9A9;
+    cursor: pointer;
+}
+
+.oBox {
+    color: rgb(70, 169, 235);
 }
 
 .box:last-child {
@@ -60,10 +49,12 @@ body {
     background-color: rgb(70, 169, 235);
 }
 
-.box:hover {
-    background-color: #A9A9A9;
-    color: #eee;
+.box:hover,
+.oBox:hover,
+.nBox:hover {
+    background-color: #f8f8f8;
 }
+
 
 .box:nth-child(2),
 .box:nth-child(3),
