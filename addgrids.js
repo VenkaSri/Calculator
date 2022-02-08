@@ -1,16 +1,15 @@
-const TOTAL_DIVS = 20;
+const TOTAL_DIVS = 19;
 const IS_NUMBER = typeof 0;
 
 const mainContainer = document.querySelector(".container");
 const digits = [
   "C",
-  "( )",
   "%",
   "/",
   7,
   8,
   9,
-  "X",
+  "x",
   4,
   5,
   6,
@@ -33,7 +32,7 @@ for (let i = 0; i < TOTAL_DIVS; i++) {
     div.textContent = digits[i];
   } else if (
     digits[i] === "/" ||
-    digits[i] === "X" ||
+    digits[i] === "x" ||
     digits[i] === "+" ||
     digits[i] === "-"
   ) {

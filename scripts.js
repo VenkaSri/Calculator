@@ -1,5 +1,6 @@
+
 class Calculator {
-  constructor(prevOpText, currOpText) {
+   constructor(prevOpText, currOpText) {
     this.prevOpText = prevOpText;
     this.currOpText = currOpText;
     this.clear();
@@ -23,16 +24,33 @@ class Calculator {
 
   chooseOperation(operation) {
     if(this.operation === '') return;
+
     if (this.prevOP !== '') {
       this.compute()
     }
-    this.operation = operation;
-    this.prevOP = this.currOP;
-    this.currOP = "";
+
+      this.operation = operation;
+      this.prevOP = this.currOP;
+      this.currOP = "";
+
+    
   }
 
+percent() {
+  let p = parseFloat(this.currOP) / 100;
+  this.currOP = p;
+  
+}
+
+brackets() {
+  
+  this.currOP = `(${this.currOP})`;
+  
+}
+
+
   compute() {
-    let computation
+    let computation;
     const prev = parseFloat(this.prevOP);
     const current = parseFloat(this.currOP);
     if(isNaN(prev) || isNaN(current)) return;
@@ -46,9 +64,9 @@ class Calculator {
       case "/":
         computation = prev / current;
         break;
-      case "X":
-          computation = prev * current;
-          break;
+      case "x":
+        computation = prev * current;
+        break;
       default:
         return
     }
@@ -58,10 +76,18 @@ class Calculator {
   }
 
   updateDisplay() {
+    
     this.currOpText.innerText = this.currOP;
+
     if(this.operation != null) {
-      this.prevOpText.innerText = `${this.prevOP} ${this.operation}`;
+      
+        this.prevOpText.innerText = `${this.prevOP} ${this.operation}`;
+      
+      
+    } else {
+      this.prevOpText.innerText = '';
     }
+    
     
   
   }
@@ -72,11 +98,10 @@ const button = document.querySelector("button");
 const numbers = document.querySelectorAll(".nBox");
 const funcs = document.querySelectorAll(".box");
 const clearButton = funcs[0];
-const bracketsButton = funcs[1];
-const percentButton = funcs[2];
+const percentButton = funcs[1];
 const opButtons = document.querySelectorAll(".oBox");
-const equalsButton = funcs[5];
-const deciButton = funcs[4];
+const equalsButton = funcs[4];
+const deciButton = funcs[3];
 const plusMinusButton = funcs[7];
 const prevOpText = document.querySelector(".preview-op");
 const currOpText = document.querySelector(".current-op");
@@ -112,7 +137,9 @@ clearButton.addEventListener('click', () => {
   calc.updateDisplay();
 })
 
-clearButton.addEventListener('click', () => {
-  calc.clear();
+
+percentButton.addEventListener('click', () => {
+  calc.percent();
   calc.updateDisplay();
 })
+
