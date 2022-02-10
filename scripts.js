@@ -1,6 +1,5 @@
-
 class Calculator {
-   constructor(prevOpText, currOpText) {
+  constructor(prevOpText, currOpText) {
     this.prevOpText = prevOpText;
     this.currOpText = currOpText;
     this.clear();
@@ -13,9 +12,8 @@ class Calculator {
   }
 
   delete() {
-    this.currOP = this.currOP.toString().slice(0, -1)
+    this.currOP = this.currOP.toString().slice(0, -1);
   }
-
 
   appendNumber(number) {
     if (number === "." && this.currOP.includes(".")) return;
@@ -23,37 +21,47 @@ class Calculator {
   }
 
   chooseOperation(operation) {
-    if(this.operation === '') return;
+    if (this.operation === "") return;
 
-    if (this.prevOP !== '') {
-      this.compute()
+    if (this.prevOP !== "") {
+      this.compute();
     }
 
-      this.operation = operation;
-      this.prevOP = this.currOP;
-      this.currOP = "";
-
-    
+    this.operation = operation;
+    this.prevOP = this.currOP;
+    this.currOP = "";
   }
 
-percent() {
-  let p = parseFloat(this.currOP) / 100;
-  this.currOP = p;
-  
-}
+  percent() {
+    let p = parseFloat(this.currOP) / 100;
+    this.currOP = p;
+  }
 
-brackets() {
-  
-  this.currOP = `(${this.currOP})`;
-  
-}
+  plusMinus() {
+    let num = parseFloat(this.currOP);
+    let mathSign = Math.sign(num);
 
+    console.log(typeof mathSign);
+    // alert(Math.abs(num));
+    switch (mathSign) {
+      case 1:
+        this.currOP = -Math.abs(num);
+        break;
+      case -1:
+        this.currOP = Math.abs(num);
+        break;
+    }
+  }
+
+  brackets() {
+    this.currOP = `(${this.currOP})`;
+  }
 
   compute() {
     let computation;
     const prev = parseFloat(this.prevOP);
     const current = parseFloat(this.currOP);
-    if(isNaN(prev) || isNaN(current)) return;
+    if (isNaN(prev) || isNaN(current)) return;
     switch (this.operation) {
       case "+":
         computation = prev + current;
@@ -68,33 +76,25 @@ brackets() {
         computation = prev * current;
         break;
       default:
-        return
+        return;
     }
     this.currOP = computation;
     this.operation = undefined;
-    this.prevOP = '';
+    this.prevOP = "";
   }
 
   updateDisplay() {
-    
     this.currOpText.innerText = this.currOP;
 
-    if(this.operation != null) {
-      
-        this.prevOpText.innerText = `${this.prevOP} ${this.operation}`;
-      
-      
+    if (this.operation != null) {
+      this.prevOpText.innerText = `${this.prevOP} ${this.operation}`;
     } else {
-      this.prevOpText.innerText = '';
+      this.prevOpText.innerText = "";
     }
-    
-    
-  
   }
 }
 
 
-const button = document.querySelector("button");
 const numbers = document.querySelectorAll(".nBox");
 const funcs = document.querySelectorAll(".box");
 const clearButton = funcs[0];
@@ -102,7 +102,8 @@ const percentButton = funcs[1];
 const opButtons = document.querySelectorAll(".oBox");
 const equalsButton = funcs[4];
 const deciButton = funcs[3];
-const plusMinusButton = funcs[7];
+const delButton = document.querySelector('.del-button');
+const plusMinusButton = funcs[2];
 const prevOpText = document.querySelector(".preview-op");
 const currOpText = document.querySelector(".current-op");
 
@@ -127,19 +128,27 @@ opButtons.forEach((but) => {
   });
 });
 
-equalsButton.addEventListener('click', () => {
+equalsButton.addEventListener("click", () => {
   calc.compute();
   calc.updateDisplay();
-})
+});
 
-clearButton.addEventListener('click', () => {
+clearButton.addEventListener("click", () => {
   calc.clear();
   calc.updateDisplay();
-})
+});
 
-
-percentButton.addEventListener('click', () => {
+percentButton.addEventListener("click", () => {
   calc.percent();
   calc.updateDisplay();
-})
+});
 
+plusMinusButton.addEventListener("click", () => {
+  calc.plusMinus();
+  calc.updateDisplay();
+});
+
+delButton.addEventListener("click", () => {
+  calc.delete();
+  calc.updateDisplay();
+});

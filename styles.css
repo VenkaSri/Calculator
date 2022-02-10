@@ -12,21 +12,40 @@ body {
 }
 
 .display {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    font-size: 1.5em;
+}
+
+.dis {
     height: 200px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: flex-end;
-    font-size: 2.4em;
+    font-size: 2em;
 }
 
-.display .ans {
-    height: 200x;
-    width: 200px;
-    position: absolute;
-    right: 0;
-    border: 1px solid blue;
+
+
+.preview-op,
+.current-op,
+.del-button {
+    margin-right: 8px;
 }
+
+.current-op {
+    margin-top: 60px;
+}
+
+.del-button {
+    margin-top: 10px;
+    color: #A9A9A9;
+}
+
+
 
 .box,
 .nBox,
