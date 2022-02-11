@@ -8,11 +8,14 @@
     justify-content: center;
     border-bottom: none; 
     flex-direction: column;
+    background: #345678;
 }
 
 .logo {
     margin-top: 5px;
     margin-left: 10px;
+    color: #ADB2BD;
+
 }
 
 .syst-bar {
@@ -24,12 +27,13 @@
     align-items: center;
     gap: 5px;
     font-size: 12px;
+    background: #f0f0f0;;
 }
 
 .bot-part {
     height: 60px;
     border: 1px solid #ADB2BD;
-
+    background: #345678;
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
     display: flex;
@@ -68,8 +72,20 @@
     border-bottom-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
-    width: 70px;
+    width: 72px;
     border: 1px solid #aaa9ad;
+    background: #aaa9ad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+
+.speakers > div {
+    height: 1px;
+    width: 1px;
+    border: 1px solid black;
+    
 }
 
 .home-button {

@@ -43,3 +43,20 @@ for (let i = 0; i < TOTAL_DIVS; i++) {
     div.textContent = digits[i];
   }
 }
+
+// const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+// const op = ['+', '-', '3', '4', '5', '6', '7', '8', '9', '0'];
+const strDigits = digits.map(function (e) {
+  return e.toString();
+});
+
+document.addEventListener("keydown", (e) => {
+  for (let i = 0; i < strDigits.length; i++) {
+    if (e.key === strDigits[i]) {
+      if (e.key !== "+" && e.key !== "x" && e.key !== "/" && e.key !== "-" && e.key !== "=") {
+        calc.appendNumber(e.key);
+        calc.updateDisplay();
+      }
+    }
+  }
+});

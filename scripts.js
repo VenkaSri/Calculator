@@ -17,7 +17,7 @@ class Calculator {
 
   appendNumber(number) {
     if (number === "." && this.currOP.includes(".")) return;
-    if(this.currOP.length > 12) return;
+    if (this.currOP.length > 12) return;
     this.currOP = this.currOP.toString() + number.toString();
   }
 
@@ -34,11 +34,10 @@ class Calculator {
   }
 
   currStatus() {
-    if(this.currOP === '') {
+    if (this.currOP === "") {
       this.currOP = 0;
     }
   }
-
 
   percent() {
     if (this.currOP === "") return;
@@ -63,7 +62,6 @@ class Calculator {
     }
   }
 
-
   compute() {
     let computation;
     const prev = parseFloat(this.prevOP);
@@ -85,39 +83,34 @@ class Calculator {
       default:
         return;
     }
-    if(computation.toString().length > 12) {
+    if (computation.toString().length > 12) {
       this.currOP = Number.parseFloat(computation).toExponential(4);
     } else {
       this.currOP = computation;
     }
-    
-    
+
     this.operation = undefined;
     this.prevOP = "";
   }
-
 
   updateDisplay() {
     this.currOpText.innerText = this.currOP;
 
     if (this.operation != null) {
       this.prevOpText.innerText = `${this.prevOP} ${this.operation}`;
-      
     } else {
       this.prevOpText.innerText = "";
     }
   }
 
   checkCurrText() {
-    if(this.currOpText.innerText === '') {
-      document.querySelector('.del-button').classList.remove('delC');
+    if (this.currOpText.innerText === "") {
+      document.querySelector(".del-button").classList.remove("delC");
     } else {
-      document.querySelector('.del-button').classList.add('delC');
+      document.querySelector(".del-button").classList.add("delC");
     }
   }
-
 }
-
 
 const numbers = document.querySelectorAll(".nBox");
 const funcs = document.querySelectorAll(".box");
@@ -126,18 +119,18 @@ const percentButton = funcs[1];
 const opButtons = document.querySelectorAll(".oBox");
 const equalsButton = funcs[4];
 const deciButton = funcs[3];
-const delButton = document.querySelector('.del-button');
+const delButton = document.querySelector(".del-button");
 const plusMinusButton = funcs[2];
 const prevOpText = document.querySelector(".preview-op");
 const currOpText = document.querySelector(".current-op");
-const time = document.querySelector('.time');
-
-
+const time = document.querySelector(".time");
+const frontSpeakers = document.querySelector(".speakers");
 
 const calc = new Calculator(prevOpText, currOpText);
 
 numbers.forEach((but) => {
   but.addEventListener("click", () => {
+
     calc.appendNumber(but.innerText);
     calc.updateDisplay();
     calc.checkCurrText();
@@ -187,14 +180,24 @@ delButton.addEventListener("click", () => {
 function formatAMPM(date) {
   var hours = date.getHours();
   var minutes = date.getMinutes();
-  var ampm = hours >= 12 ? 'pm' : 'am';
+  var ampm = hours >= 12 ? "pm" : "am";
   hours = hours % 12;
   hours = hours ? hours : 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? '0'+minutes : minutes;
-  var strTime = hours + ':' + minutes + ' ' + ampm;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  var strTime = hours + ":" + minutes + " " + ampm;
   return strTime;
 }
-time.innerHTML = formatAMPM(new Date);
+time.innerHTML = formatAMPM(new Date());
 setInterval(() => {
-  time.innerHTML = formatAMPM(new Date);},10000);
+  time.innerHTML = formatAMPM(new Date());
+}, 10000);
 
+for (let i = 0; i < 16; i++) {
+  const div = document.createElement("div");
+  frontSpeakers.appendChild(div);
+}
+
+// if(e.key ) {
+//   console.log(e);
+
+// }
