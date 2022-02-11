@@ -195,3 +195,6 @@ function formatAMPM(date) {
   return strTime;
 }
 time.innerHTML = formatAMPM(new Date);
+setInterval(() => {
+  time.innerHTML = formatAMPM(new Date);},10000);
+
