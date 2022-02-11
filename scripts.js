@@ -17,6 +17,7 @@ class Calculator {
 
   appendNumber(number) {
     if (number === "." && this.currOP.includes(".")) return;
+    if(this.currOP.length > 12) return;
     this.currOP = this.currOP.toString() + number.toString();
   }
 
@@ -32,7 +33,16 @@ class Calculator {
     this.currOP = "";
   }
 
+  currStatus() {
+    if(this.currOP === '') {
+      this.currOP = 0;
+    }
+  }
+
+
   percent() {
+    if (this.currOP === "") return;
+
     let p = parseFloat(this.currOP) / 100;
     this.currOP = p;
   }
@@ -53,9 +63,6 @@ class Calculator {
     }
   }
 
-  brackets() {
-    this.currOP = `(${this.currOP})`;
-  }
 
   compute() {
     let computation;
@@ -78,16 +85,24 @@ class Calculator {
       default:
         return;
     }
-    this.currOP = computation;
+    if(computation.toString().length > 12) {
+      this.currOP = Number.parseFloat(computation).toExponential(4);
+    } else {
+      this.currOP = computation;
+    }
+    
+    
     this.operation = undefined;
     this.prevOP = "";
   }
+
 
   updateDisplay() {
     this.currOpText.innerText = this.currOP;
 
     if (this.operation != null) {
       this.prevOpText.innerText = `${this.prevOP} ${this.operation}`;
+      
     } else {
       this.prevOpText.innerText = "";
     }
@@ -133,6 +148,7 @@ deciButton.addEventListener("click", () => {
 
 opButtons.forEach((but) => {
   but.addEventListener("click", () => {
+    calc.currStatus();
     calc.chooseOperation(but.innerText);
     calc.updateDisplay();
   });
