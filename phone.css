@@ -16,8 +16,14 @@
 }
 
 .syst-bar {
-    height: 20px;
-    border: 1px solid red;
+    height: 15px;
+    border: 1px solid #ADB2BD;
+    border-bottom: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
 }
 
 .bot-part {
@@ -47,7 +53,6 @@
     border-right: 1px solid #ADB2BD;
 
 }
-
 
 .light-sensors {
     display: flex;
