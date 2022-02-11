@@ -92,6 +92,15 @@ class Calculator {
       this.prevOpText.innerText = "";
     }
   }
+
+  checkCurrText() {
+    if(this.currOpText.innerText === '') {
+      document.querySelector('.del-button').classList.remove('delC');
+    } else {
+      document.querySelector('.del-button').classList.add('delC');
+    }
+  }
+
 }
 
 
@@ -113,6 +122,7 @@ numbers.forEach((but) => {
   but.addEventListener("click", () => {
     calc.appendNumber(but.innerText);
     calc.updateDisplay();
+    calc.checkCurrText();
   });
 });
 
@@ -136,6 +146,7 @@ equalsButton.addEventListener("click", () => {
 clearButton.addEventListener("click", () => {
   calc.clear();
   calc.updateDisplay();
+  calc.checkCurrText();
 });
 
 percentButton.addEventListener("click", () => {
@@ -151,4 +162,5 @@ plusMinusButton.addEventListener("click", () => {
 delButton.addEventListener("click", () => {
   calc.delete();
   calc.updateDisplay();
+  calc.checkCurrText();
 });

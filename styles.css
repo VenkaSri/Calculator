@@ -42,9 +42,15 @@ body {
 
 .del-button {
     margin-top: 10px;
+    color: #f0f0f0;
+}
+
+.delC {
+
     color: #A9A9A9;
 }
 
+/* color: #A9A9A9; */
 
 
 .box,
