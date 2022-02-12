@@ -23,11 +23,28 @@
     border: 1px solid #ADB2BD;
     border-bottom: none;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
+    justify-content: space-between;
     gap: 5px;
     font-size: 12px;
     background: #f0f0f0;;
+}
+
+.syst-bar .left-side {
+    display: flex;
+    gap: 5px;
+    font-size: 10px;
+}
+
+
+.left-side img {
+    height: 11px;
+    width: 11px;
+}
+
+.syst-bar .right-side {
+    display: flex;
+    gap: 5px;
 }
 
 .bot-part {

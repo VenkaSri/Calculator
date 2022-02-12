@@ -51,12 +51,53 @@ const strDigits = digits.map(function (e) {
 });
 
 document.addEventListener("keydown", (e) => {
+  keyOperators(e); 
   for (let i = 0; i < strDigits.length; i++) {
     if (e.key === strDigits[i]) {
-      if (e.key !== "+" && e.key !== "x" && e.key !== "/" && e.key !== "-" && e.key !== "=") {
+      if (
+        e.key !== "+" &&
+        e.key !== "x" &&
+        e.key !== "/" &&
+        e.key !== "-" &&
+        e.key !== "="
+      ) {
         calc.appendNumber(e.key);
         calc.updateDisplay();
+        calc.checkCurrText();
       }
     }
   }
 });
+
+function keyOperators(e) {
+  switch (e.key) {
+    case "=":
+      calc.compute();
+      calc.updateDisplay();
+      break;
+    case "Enter":
+      calc.compute();
+      calc.updateDisplay();
+      break;
+    case "+":
+      calc.currStatus();
+      calc.chooseOperation(e.key);
+      calc.updateDisplay();
+      break;
+    case "Backspace":
+      calc.delete();
+      calc.updateDisplay();
+      calc.checkCurrText();
+      break;
+    case "-":
+      calc.currStatus();
+      calc.chooseOperation(e.key);
+      calc.updateDisplay();
+      break;
+    case "/":
+      calc.currStatus();
+      calc.chooseOperation(e.key);
+      calc.updateDisplay();
+      break;
+  }
+}
