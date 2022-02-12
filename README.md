@@ -1,9 +1,9 @@
 # Calculator
 
-A simple  This was part of the [The Odin Project curriculum.](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/etch-a-sketch-project)
+A simple  calculator app based on the specifications laid by[The Odin Project curriculum.](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/calculator)
 
-[Click here for a live preview](https://venkasri.github.io/ETCH-A-SKETCH/)
-
+[Click here for a live preview](https://venkasri.github.io/Calculator/)
+<!-- 
 Before starting the project, I [sketched](https://i.imgur.com/iT5wHTs.jpg) out a layout of how I wanted the outcome of website to look like, then I used [Figma](https://i.imgur.com/5SkEWOX.png) to translate what I sketched on paper onto the computer which really helpful!!
 
 ### What I learned 
@@ -18,7 +18,7 @@ Before starting the project, I [sketched](https://i.imgur.com/iT5wHTs.jpg) out a
 - Visual Studio Code
 - Figma
 
-
+ -->
 
 
 
