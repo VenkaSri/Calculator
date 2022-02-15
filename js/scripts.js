@@ -63,30 +63,30 @@ class Calculator {
   }
 
   compute() {
-    let computation;
+    let operate;
     const prev = parseFloat(this.prevOP);
     const current = parseFloat(this.currOP);
     if (isNaN(prev) || isNaN(current)) return;
     switch (this.operation) {
       case "+":
-        computation = prev + current;
+        operate = prev + current;
         break;
       case "-":
-        computation = prev - current;
+        operate = prev - current;
         break;
       case "/":
-        computation = prev / current;
+        operate = prev / current;
         break;
       case "x":
-        computation = prev * current;
+        operate = prev * current;
         break;
       default:
         return;
     }
-    if (computation.toString().length > 12) {
-      this.currOP = Number.parseFloat(computation).toExponential(4);
+    if (operate.toString().length > 12) {
+      this.currOP = Number.parseFloat(operate).toExponential(4);
     } else {
-      this.currOP = computation;
+      this.currOP = operate;
     }
 
     this.operation = undefined;
@@ -197,7 +197,7 @@ for (let i = 0; i < 16; i++) {
   frontSpeakers.appendChild(div);
 }
 
-// if(e.key ) {
-//   console.log(e);
+//footer
 
-// }
+const d = new Date();
+document.querySelector('.year').innerHTML = d.getFullYear();

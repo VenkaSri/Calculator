@@ -44,11 +44,10 @@ for (let i = 0; i < TOTAL_DIVS; i++) {
   }
 }
 
-// const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-// const op = ['+', '-', '3', '4', '5', '6', '7', '8', '9', '0'];
 const strDigits = digits.map(function (e) {
   return e.toString();
 });
+
 
 document.addEventListener("keydown", (e) => {
   keyOperators(e); 
