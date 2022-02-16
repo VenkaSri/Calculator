@@ -1,6 +1,6 @@
 # Calculator
 
-A simple  calculator app based on the specifications laid by [The Odin Project curriculum.](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/calculator)
+A simple  calculator app based on the specifications laid out by [The Odin Project curriculum.](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/calculator)
 
 [Click here for a live preview](https://venkasri.github.io/Calculator/)
 
